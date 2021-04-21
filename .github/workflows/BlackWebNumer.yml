@@ -1,0 +1,24 @@
+name: BlackWebNumer
+
+on:
+  push: 
+    branches: [ main ]
+jobs:
+  push_to_registry: 
+    name: Docker Push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check  Repositories
+        uses: actions/checkout@v2
+      - name: DocLog
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - name: DocBu
+        run: |
+          docker build . -t park21306/client-numerical:latest
+      - name: DocPu
+        run: |
+          docker push park21306/client-numerical:latest
