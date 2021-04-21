@@ -18,7 +18,7 @@ jobs:
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - name: DocBu
         run: |
-          docker build . -t park21306/client-numerical:latest
+          docker build . -t park21306/server-numerical:latest
       - name: DocPu
         run: |
-          docker push park21306/client-numerical:latest
+          docker push park21306/server-numerical:latest
